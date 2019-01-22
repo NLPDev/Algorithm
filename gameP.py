@@ -1,37 +1,26 @@
 
-M=10010
-
-def find(pos):
-    pos[0]=0
-    pos[1]=1
-    pos[2] = 1
-    pos[3] = 1
-    pos[4] = 0
-    pos[5] = 1
-    pos[6] = 1
-    pos[7] = 1
-
-    for i in range(8, M):
-        if pos[i-1]==0 or pos[i-3]==0 or pos[i-4]==0:
-            pos[i]=1
-        else:
-            pos[i]=0
-
-
-
-
-
 pp=[]
-tot=10000
 
-M=tot+1
+tot=10
+
+M=tot+10
+
 for i in range(M):
-    pp.append(0)
+    pp.append([0, 0])
+
+pp[1][0]=1/3
+pp[2][0]=1/3
+pp[3][0]=1/3
+
+# print(pp[1][1])
+for i in range(M):
+    for j in range(3):
+        k=j+1
+        if i>k:
+            pp[i][0]=pp[i][0]+pp[i-k][1]/3
+            # print("i={0}, k={1}, pp[i][0]={2}, pp[i-k][1]={3}".format(i, k, pp[i][0], pp[i-k][1]))
+
+            pp[i][1] = pp[i][1] + pp[i-k][0] / 3
 
 
-find(pp)
-
-if pp[tot]==0:
-    print("Lost")
-else:
-    print("Win")
+print(pp[tot][0]*100)
