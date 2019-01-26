@@ -1,3 +1,7 @@
+#  pp[i][0]: the probability that player1 will take the ith
+#  pp[i][1]: the probability that player2 will take the ith
+
+#  Player1 start the game, so pp[0][1]=1
 
 pp=[]
 
